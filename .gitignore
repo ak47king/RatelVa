@@ -1,0 +1,15 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.idea
+.DS_Store
+/build
+/captures
+
+
+app/src/main/assets/base.apk
+script/base.apk
+rebuilder/src/main/resources/base.apk
+dist/

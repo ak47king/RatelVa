@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    }
+
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:2.0.4"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: "com.github.johnrengelman.shadow"
+
+sourceSets.main.resources.srcDir 'src/main/resources'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'org.apache.commons:commons-lang3:3.7'
+    compile 'commons-io:commons-io:2.6'
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.alibaba:fastjson:1.2.10'
+    compile 'commons-cli:commons-cli:1.4'
+    compile 'xmlunit:xmlunit:1.6'
+    compile 'xpp3:xpp3:1.1.4c'
+    compile 'commons-cli:commons-cli:1.4'
+    // https://mvnrepository.com/artifact/net.dongliu.apk-parser/apk-parser
+    compile group: 'net.dongliu', name: 'apk-parser', version: '2.6.9'
+
+    compile project(':apktool')
+}
+
+
+jar.enabled = false
+shadowJar {
+    baseName = 'container-builder-va'
+    classifier = null
+    version = '1.0.0'
+    manifest {
+        attributes 'Main-Class': 'com.virjar.ratel.va.rebuilder.Main'
+    }
+}
+
+task injectTemplateAPK(type: Copy) {
+    from '../container-template/build/outputs/apk/release/container-template-release.apk'
+    into 'src/main/resources/'
+    rename {
+        'base.apk'
+    }
+}
+injectTemplateAPK.dependsOn(':container-template:assembleRelease')
+processResources.dependsOn(injectTemplateAPK)

@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+
+
+dependencies {
+    compile 'xmlunit:xmlunit:1.6'
+    compile 'xpp3:xpp3:1.1.4c'
+    compile 'commons-io:commons-io:2.6'
+    compile 'commons-cli:commons-cli:1.4'
+    compile 'org.smali:baksmali:2.2.5'
+    compile 'org.smali:smali:2.2.5'
+    compile 'org.apache.commons:commons-lang3:3.7'
+    compile 'org.yaml:snakeyaml:1.18:android'
+}
+
+sourceSets.main.resources.srcDir 'src/main/resources'
