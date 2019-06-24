@@ -16,7 +16,7 @@ RatelVa是基于virtualAPP实现一个一个单APK改包框架，他利用VA可�
 
 ![img](img/ratel-va-1.png)
 ![img](img/ratel-va-2.png)
-![img](img/1561378413954317.mp4)
+![img](img/ratelva.gif)
 
 
 
