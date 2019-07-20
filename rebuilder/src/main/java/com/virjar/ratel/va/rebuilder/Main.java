@@ -117,7 +117,7 @@ public class Main {
 
         File templateAssetsDir = new File(templateDir, "assets");
         //insert delegate apk
-        FileUtils.copyFileToDirectory(file, templateAssetsDir);
+        FileUtils.copyFile(file, new File(templateAssetsDir, "base.apk"));
 
 
         //replace logo
